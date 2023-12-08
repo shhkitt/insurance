@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="contract_table_create" author="shhkitt">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="contract"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="contract">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+
+
+            <column name="start" type="date">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="end" type="date">
+                <constraints nullable="true"/>
+            </column>
+
+
+            <column name="program_id" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="insured_id" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="insurer_type" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+            <column name="insurer" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="contract"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

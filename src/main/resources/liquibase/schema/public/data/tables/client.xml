@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="client_table_create" author="shhkitt">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="client"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="client">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="email" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="first_name" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="last_name" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="password" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="role" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="client"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

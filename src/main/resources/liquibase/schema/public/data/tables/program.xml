@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="program_table_create" author="shhkitt">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="program"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="program">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="type" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="length" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="varchar">
+                <constraints nullable="true"/>
+            </column>
+            <column name="price" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="clinic"/>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
