@@ -16,10 +16,6 @@ public class InsuranceMapper extends ConfigurableMapper {
                 .byDefault()
                 .register();
 
-        factory.classMap(Clinic.class, ClinicDto.class)
-                .byDefault()
-                .register();
-
         factory.classMap(Insured.class, InsuredDto.class)
                 .byDefault()
                 .register();
