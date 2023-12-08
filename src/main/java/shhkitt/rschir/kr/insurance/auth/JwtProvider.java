@@ -17,7 +17,8 @@ public class JwtProvider {
     private SecretKey jwtAccessSecret;
 
     public JwtProvider() {
-        jwtAccessSecret = Keys.hmacShaKeyFor(Decoders.BASE64.decode("verysecretsecret1secretsupersecretkeyaaaaaaaaaaaaaaaaaaaaaa"));
+        jwtAccessSecret = Keys.hmacShaKeyFor(Decoders.BASE64
+                .decode("supersecretsecretinsurancekeyissoamazingilovethissong"));
 
     }
 
